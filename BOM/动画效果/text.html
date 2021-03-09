@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/BOM/动画效果/animate.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            position:fixed;
+            left: px;
+            top: 40px;
+            width: 30px;
+            height: 30px;
+            background-color: brown;
+            cursor: pointer;
+        }
+        span{
+            float: right;
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .mate{
+            position: absolute;
+            left: -100px;
+            top: 0;
+            height: 30px;
+            width: 130px;
+            line-height: 30px;
+            text-align: center;
+            z-index: -1;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <span>➡</span>
+        <div class="mate">滚动条</div>
+    </div>
+<script>
+    let main = document.querySelector('.main');
+    let mate = document.querySelector('.mate');
+    main.addEventListener('mouseenter',function(){
+        animate(mate,30);
+    })
+    main.addEventListener('mouseleave',function(){
+        animate(mate,-100);
+    })
+</script>
+</body>
+</html>

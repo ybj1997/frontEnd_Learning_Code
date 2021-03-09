@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <img src="" alt="">
+    <div>上午好</div>
+    <script>
+        let img = document.querySelector('img');
+        let div = document.querySelector('div');
+        let date = new Date();
+        let hour = date.getHours();
+        if (hour<12){
+            img.src = 'image/night.jpg';
+            div.innerHTML = '今天又是爱你的一天哦！';
+        }else if(hour<18){
+            img.src = "image/night.jpg";
+            div.innerHTML = '下午也要元气满满！';
+        }else{
+            img.src = "image/night.jpg";
+            div.innerHTML = '晚安！玛卡巴卡，明天我也会继续爱你哦！';
+        }
+    </script>
+</body>
+</html>

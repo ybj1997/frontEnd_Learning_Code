@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            
+            width: 500px;
+            text-align: center;
+            border-collapse: collapse;
+            margin:100px auto ;
+            }
+        th,td{
+               border: 1px solid #333;
+            }
+        thead tr{
+            height: 40px;
+            background-color: slategrey;
+        }    
+    </style>
+</head>
+<body>
+    <table>
+    <thead>
+        <tr>
+            <th>姓名</th>
+            <th>球衣号码</th>
+            <th>选秀时间</th>
+            <th>生涯最高得分</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+</body>
+<script>
+    //建立数据库，可以动态添加人员信息
+    var datas = [
+        {
+            name:'AllenIverson',
+            num:'3号',
+            time:1996,
+            score:53
+        },
+        {
+            name:'KobeByant',
+            num:'8/24号',
+            time:1996,
+            score:83
+        },
+        {
+            name:'LebronJames',
+            num:'6/23号',
+            time:2003,
+            score:61
+        },
+        {
+            name:'KawhiLeonard',
+            num:'2号',
+            time:2011,
+            score:32
+        }
+    ];
+    let tbody = document.querySelector('tbody');
+    for(let i = 0;i<datas.length;i++){
+        let tr = document.createElement('tr');//创建行（节点）
+        tbody.appendChild(tr);//添加行（节点）
+        /*在行的基础上添加列来填充单元格数据*/
+        for(let k in datas[i]){
+            let td = document.createElement('td');//创建列，因为已经有行，所有加上列就为单元格
+            td.innerHTML = datas[i][k];//先赋值而后在添加
+            tr.appendChild(td);
+        }
+        /*删除应单独操作，另外在行的基础上创建列来形成单元格*/
+        let td = document.createElement('td');
+        td.innerHTML = '<a href="javascript:;">删除</a>';
+        tr.appendChild(td); 
+        }
+        /*删除操作应该在添加操作for循环以外进行*/
+        let btn = document.querySelectorAll('a');
+        for(let i = 0;i<btn.length;i++){
+            btn[i].onclick = function(){
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    //构造函数时用于创建对象的一个函数，与工厂函数相同，不同的时工厂函数始终为Object
+    function Persion(a,b){
+        this.name=a;
+        this.age=b;
+    }
+    var per = new Person("诸葛亮",18);//per为Person的一个实例
+    var per1 = new Person("周瑜",19);//per2为另一个实例
+
+    console.log(per instanceof Person);//检查per是否时Person的一个实例
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

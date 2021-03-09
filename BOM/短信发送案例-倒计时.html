@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button>发送</button>
+</body>
+<script>
+    let btn =document.querySelector('button');
+    btn.onclick = function () {
+        btn.disabled = true;
+        let time = 10;
+        let timer = setInterval(function () {
+            if(time == 0){
+                //倒计时完成要清除定时器，改变按钮内容，取消禁止按钮，重置倒计时
+                clearInterval(timer);
+                btn.innerHTML = '发送'
+                btn.disabled = false;
+                time = 3;
+            }else{
+                btn.innerHTML = '剩余'+ time + '秒';
+                time--;
+            }
+        },1000);
+    }
+</script>
+</html>

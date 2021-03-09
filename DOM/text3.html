@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='pop-up-window'></div>
+</body>
+<script>
+    //let a = document.querySelector('body');
+    //let b = document.getElementById('abc');
+    //a.addEventListener('click',function(e){
+    //    b.style.display = 'none'
+    //},false);
+   // b.addEventListener('click',function(e){
+    //    e.stopPropagation()
+    //},false)
+    let body = document.querySelector('body');
+    let popUpWindow = document.getElementById('pop-up-window');
+    body.addEventListener('click', function (e) {
+        popUpWindow.style.display = 'none'
+    }, false)
+    popUpWindow.addEventListener('click', function (e) {
+        e.stopPropagation() //在弹窗内部点击时阻止事件传播，因此不会触发body的click事件    
+    }, false)
+</script>
+</html>

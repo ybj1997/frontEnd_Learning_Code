@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: crimson;
+            width: 300px;height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+</body>
+<script>
+    let mouse = document.querySelector('div');
+    mouse.addEventListener('mousemove',function (e) {
+        let x = e.pageX - this.offsetLeft;
+        let y = e.pageY - this.offsetTop;
+        this.innerHTML = 'X坐标是'+x+'   Y坐标是'+y;
+    })
+</script>
+</html>

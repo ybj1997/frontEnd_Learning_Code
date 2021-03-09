@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    alert("请注意！一旦存入只有存到5000元时才能取出！")
+    var money = prompt ("请输入存钱金额：")
+    var count = 0;
+    while(money<5000){
+        money *=1.05
+        count++;
+    }
+    alert("您一共需要存"+count+"年");
+    document.write("余额为："+money+"元。")
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

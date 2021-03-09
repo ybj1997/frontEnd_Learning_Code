@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    //质数是指只能被1和自身整除的数，且大于1
+    //判断用户输入数据是否为质数
+    var num = prompt("请输出数字：")
+    var flag = true;
+    for (var i = 2 ; i<num ; i++){
+       if(num % i == 0 ){
+           flag = false;
+       }
+    }
+    if(flag){
+        alert("该数字是质数！！")
+    }else{
+        alert("该数字不是质数")
+    }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

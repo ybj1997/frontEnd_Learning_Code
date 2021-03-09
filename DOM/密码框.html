@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            position:relative;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            margin:200px auto;
+        }
+        .box input{
+            width: 370px;
+            height: 30px;
+            border: 0px;
+            outline: 0;
+        }
+        .box img{
+            position:absolute;
+            width: 24px;
+            top: 2px;
+            right: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="password" name="" id="int">
+        <label for="">
+            <img src="image/night.jpg" alt="" id = 'eye'>
+        </label>
+    </div>
+    <script>
+        let eye = document.getElementById('eye');
+        let int = document.getElementById('int');
+        let flag = 0;
+        eye.onclick = function(){
+            if(flag == 0){
+                flag = 1;
+                int.type = 'text';
+                eye.src = 'image/night.jpg';
+            }else{
+                flag = 0;
+                int.type = 'password';
+                eye.src = 'image/night.jpg';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    function creat(a,b){
+     var obj = new Object;
+         obj.name = a;
+         obj.age = b;
+         obj.sayname = function(){
+             alert(this.name)
+         };
+         return obj;//工厂创建对象
+    }
+    var first = creat("科比",18);//原料
+    var second = creat("詹姆斯",19);//原料
+    //调用对象的某个属性：first.sayname();
+    //调用某个对象：console.log(first);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

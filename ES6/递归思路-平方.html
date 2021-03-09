@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const pow = (x,n) =>{
+            if(n==1){
+                return x;
+            }else{
+                return x*=pow(x,n-1);
+            }
+        }
+        console.log(pow(3,4))
+    </script>
+</body>
+</html>

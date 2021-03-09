@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url(/DOM/image/壁纸HupuBBS_210105150245-1242822577.png) no-repeat center top;
+            background-size: 100%;
+        }
+        li{
+            list-style: none;
+        }
+        .image{
+            overflow: hidden;
+            margin: 100px auto;
+            width: 420px;
+            padding-top:3px;
+            background-color: #fff;
+        }
+        .image li{
+            float: left;
+            margin:2px;
+            cursor: pointer;
+        }
+        .image img{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <ul class='image'>
+        <li><img src="/DOM/image/壁纸HupuBBS_210105150245-1242822577.png"></li>
+        <li><img src="/DOM/image/壁纸HupuBBS_210105150606-1242822577.png"></li>
+        <li><img src="/DOM/image/壁纸HupuBBS_210105150523-1242822577.png"></li>
+        <li><img src="/DOM/image/壁纸HupuBBS_210105150610-1242822577.png"></li>
+    </ul>
+</body>
+<script>
+    let imgs = document.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+        imgs[i].onclick = function(){
+            document.body.style.backgroundImage = 'url(' + this.src + ')';
+        }
+    }
+</script>
+</html>

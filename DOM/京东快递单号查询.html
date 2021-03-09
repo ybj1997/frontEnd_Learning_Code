@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .search{
+            position: relative;
+            width: 178px;
+            margin: 100px;
+        }
+        .con{
+            position: absolute;
+            display: none;
+            top:-40px;
+            width: 171px;
+            border: 1px solid rgba(0,0,0,.2);
+            box-shadow: 0 2px 4px rgba(0,0,0,.2);
+            padding: 5px 0;
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+        }
+        .con::before{
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 28px;
+            left: 18px;
+            border: 8px solid #000;
+            border-style:solid dashed dashed ;
+            border-color: #fff transparent transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class='search'>
+        <div class='con' style="display: none;"></div>
+        <input type='text' placeholder="请输入快递单号" class='jd'>
+    </div>
+</body>
+<script>
+    //通过识别键盘事件，来将表单值赋值给盒子的innerHTML
+    let con = document.querySelector('.con');
+    let jd_input = document.querySelector('.jd');
+    //keydown和keypress触发时是先执行代码而后字才进出文本框，因此按下时con中赋值为按下的前一个值，按下第一个时表单值为空
+    jd_input.addEventListener('keyup',function(){
+        if(this.value == ''){
+            con.style.display = 'none';
+        }else{
+            con.innerHTML = jd_input.value;
+            con.style.display = 'block';
+        }
+    })
+    //失去焦点时隐藏con这个盒子
+    jd_input.addEventListener('blur',function(){
+        if(this.value !== ''){
+        con.style.display = 'none';
+        }
+    })
+</script>
+</html>

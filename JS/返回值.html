@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript">
+        /*
+        *创建一个函数，用来计算三个数的和
+        *函数一般只用来运算，而不在函数内部执行结果
+        */
+      function sum(a,b,c){
+           var d = a+b+c;
+           return d;
+           //d为返回值，但不显现执行结果
+           //在return后的语句就不会执行了
+      }
+      //因此我们将该执行结果赋值给一个变量
+      //函数返回什么这个result的值就是什么
+       var result = sum(1,2,3);
+       console.log("result ="+result);
+       </script>
+    </head>
+    <body>
+        <button onclick="alert('讨厌')">别点我
+
+        </button>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    div{
+        width:600px;
+        margin: 100px auto;
+    }
+    .massage{
+        display: inline-block;
+        font-size: 12px;
+        color:#999;
+        padding-left: 15px;
+        background: url();  
+    }
+    .wrong{
+        color:red;
+        background: url();
+    }
+    .right{
+        color: green;
+        background: url();
+    }
+    </style>
+</head>
+<body>
+    <div class='father'>
+            <input type="password" class='ipt'>
+            <p class='massage'>请输入密码</p>
+    </div>
+</body>
+<script>
+    var ipt = document.querySelector('.ipt');
+    var massage = document.querySelector('.massage');
+    ipt.onblur = function(){
+        if(this.value.length < 3 || this.value.length > 16 ){
+            massage.className = 'massage wrong';
+            massage.innerHTML = '输入密码位数不正确！';
+        }else{
+            massage.className = 'massage right';
+            massage.innerHTML = '输入正确';
+        }
+    }
+</script>
+</html>

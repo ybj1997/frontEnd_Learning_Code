@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin: 100px ;
+            background-color: brown;
+            color: cornsilk;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    //substr('截取起始位置'，截取几个字符)
+    let a = location.search.substr(1);
+    //利用split将usename=Allen分割为数组
+    let arr = a.split('=');
+    let b = document.querySelector('div');
+    b.innerHTML = arr[1] + '欢迎您！'
+</script>
+</html>

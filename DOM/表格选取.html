@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 15px;
+        }
+        table{
+            width: 400px;
+            text-align: center;
+            margin: 200px auto;
+            border-collapse: collapse;
+        }
+        thead tr{
+            background-color:skyblue;
+            height: 30px;
+        }
+        tbody tr{
+            height: 30px;
+        }
+        tbody td{
+            border:1px solid skyblue;
+        }
+        .highlight{
+            background-color: slategray;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>号码</th>
+                <th>位置</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Allen Iverson</td>
+                <td>45</td>
+                <td>3号</td>
+                <td>得分后卫</td>
+            </tr>
+            <tr>
+                <td>Kobe Bryant</td>
+                <td>41</td>
+                <td>8/24号</td>
+                <td>得分后卫</td>
+            </tr>
+            <tr>
+                <td>LeBron James</td>
+                <td>36</td>
+                <td>23/6号</td>
+                <td>小前锋</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    let trs = document.querySelector('tbody').querySelectorAll('tr');
+    for(var i = 0;i<trs.length;i++){
+        trs[i].onmouseover = function(){
+            this.className = 'highlight';
+        }
+        trs[i].onmouseout = function(){
+            this.className = '';
+        }
+    }
+</script>
+</html>

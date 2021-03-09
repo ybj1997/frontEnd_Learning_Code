@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .w{
+            width: 1200px;
+            margin:10px auto;
+        }
+        .header{
+            height: 150px;
+            background-color: purple;
+        }
+        .banner{
+            height: 250px;
+            background-color: skyblue;
+        }
+        .main{
+            height: 1000px;
+            background-color: yellow;
+        }
+        .silder-bar{
+            position: absolute;
+            left: 50%;
+            margin-left: 600px;
+            top: 300px;
+            background-color: pink;
+            width: 45px;
+            height: 130px;
+        }
+        span{
+            display: none;
+            position: absolute;
+            bottom: 0;
+            text-align: center
+        }
+    </style>
+</head>
+<body>
+    <div class="silder-bar">
+        <span class="gaBack">返回顶部</span>
+    </div>
+    <div class="header">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+</body>
+<script>
+    let silderbar = document.querySelector('.silder-bar');
+    let span = document.querySelector('.silder-bar').querySelector('span');
+    let bannerTop = banner.offsetTop;
+        /*长度172为banner的offsettop,并且要定义在滚动事件的外面*/ 
+        /*长度128为span的offsettop减去banner的offsettop*/   
+    document.addEventListener('scroll',function(){
+        if(window.pageYOffset >= 172 ){
+            silderbar.style.position = 'fixed';
+            silderbar.style.top = 128 + 'px';
+            span.style.display = 'block';
+        }else{
+            silderbar.style.position = 'absolute';
+            silderbar.style.top = 300 + 'px';
+            span.style.display = 'none';
+        }
+    }) 
+</script>
+</html>
