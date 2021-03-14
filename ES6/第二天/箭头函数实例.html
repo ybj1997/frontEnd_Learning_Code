@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击两秒变颜色</title>
+    <style>
+        #ad {
+            width: 200px;
+            height: 200px;
+            background: #ced;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ad"></div>
+</body>
+<script>
+    let ad = document.querySelector('#ad');
+    ad.addEventListener('click', function () {
+        //1.传统函数方式
+        //保存当前作用域的this，如不在此处保存this，下一个作用域中声明this会找到全局作用域window中的this
+        //let _this = this;
+        //setInterval(function () {
+        //    _this.style.background = 'pink';//_this在当前作用域找不到_this时会往上找this
+        //}, 2000)
+        //2.箭头函数方式
+        setInterval(()=>{
+           this.style.background = 'pink' ;
+           //箭头函数中this是静态的，指向上一个作用域中的this，指向事件源ad
+        },2000)
+    })
+</script>
+
+</html>
