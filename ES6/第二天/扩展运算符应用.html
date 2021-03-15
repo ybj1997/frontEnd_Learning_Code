@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符的应用</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        //1.数组的合并
+        const arr1 = ['关羽','张飞','刘备'];
+        const arr2 = ['武松','宋江','林冲'];
+
+        //利用concat合并数组
+        //const arr3 = arr1.concat(arr2);
+        //console.log(arr3);
+
+        //利用扩展运算符将数组转化为参数序列
+        const arr4 = [...arr1,...arr2];
+        console.log(arr4);
+
+        //2.数组克隆
+        const tfboys = ['易烊千玺','王源','王俊凯'];
+        const fake_tfboys = [...tfboys];
+        //同理扩展运算符将tfboys数组转化成参数序列，而后加上中括号成为数组
+        console.log(fake_tfboys);
+
+        //3.将伪数组(_proto:object)转化为真正的数组
+        let divs = document.querySelectorAll('div');
+        let real_divs = [...divs];
+        console.log(real_divs);
+    </script>
+</body>
+</html>
