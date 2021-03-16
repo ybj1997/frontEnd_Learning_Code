@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义遍历数据</title>
+</head>
+<body>
+    <script>
+        //迭代器：是一种接口，为不同数据结构提供统一的访问机制，
+        //任何数据结构只要部署了iterator接口，就可以完成遍历操作。
+
+        工作原理：
+        //1.创建一个指针对象，指向当前数据结构的起始位置。
+        //2.第一次调用对象的next方法，指针自动指向数据结构的第一个成员。
+        //3.接下来不断调用next方法，指针一直往后移动，直到指向最后一个成员。
+        //4.每调用next方法返回一个包含value和done属性的对象
+        ！！！注意！！！：需要自定义遍历数据的时候，要想到迭代器、
+        
+        
+        //声明一个对象
+        const banji = {
+            name:'火箭班',
+            menber : [
+                'yan',
+                'bo',
+                'jun'
+            ],
+            [Symbol.iterator](){
+                let index = 0;
+                let _this = this;
+                return{
+                    next:function(){
+                        if(index< _this.menber.length){
+                            const result = {value:_this.menber[index], done:false};
+                            index++;
+                            return result;
+                        }else{
+                            return {value: undefined,done:ture}
+                        }
+                    }
+                }
+            }
+        }
+
+        //遍历对象
+        //for of 需要iterater接口， 
+        //for in
+        //forEach()方法
+        for(let key of banji){
+            console.log(banji);
+        }
+    </script>
+</body>
+</html>

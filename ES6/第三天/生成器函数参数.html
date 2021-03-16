@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数参数</title>
+</head>
+<body>
+    <script>
+        function * fn(xingcan){
+            console.log(xingcan);
+            let one = yield 111;
+            console.log(one);
+            yield 222;
+            yield 333;
+        }
+
+        //执行获取迭代器对象
+        let iterator = fn('通过函数形参接口传入');
+        //next可以做参数传递
+        console.log(iterator.next('我是通过形参传递的参数'));
+        console.log(iterator.next('我是12行传递的参数'));
+        console.log(iterator.next());
+        console.log(iterator.next());
+    </script>
+</body>
+</html>
