@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        问题：在JS调用函数时传递变量参数时，是值传递还是引用传递？
+           *理解一：都是值（基本数据/引用地址）传递，
+                   基本数据类型的值直接分配到栈内存中供变量调用
+                   而引用类型是在堆内存中开辟一个内存用于存储键值对、并有一个16进制的地址用于寻找。将地址放到栈内存中供变量调用，因此变量的值是一个地址
+           *理解二：基本数据类型是值传递，而引用数据类型是引用传递（地址值）
+        问题：JS引擎如何管理内存？
+          1.内存生命周期
+           * 分配内存空间，得到它的使用权
+           * 存储数据，可以反复进行操作
+           * 释放内存空间
+          2.释放内存
+           *局部变量：在函数执行完毕自动释放内存
+           *对象：首先成为垃圾对象，而后在某一时刻呗垃圾回收器回收（因为垃圾回收器是每隔一段时间检查一次）
+    -->
+    <script>
+        var a = {age:12};
+        var b = a ;//将 a 的地址值赋值给 b
+        console.log(a.age);//12
+        console.log(b.age);//12
+
+        a = {name:'dage',age:18};//给a 赋值为一个新的对象，则有新的地址值
+        console.log(a.age);//18
+        console.log(b.age);//12
+
+        b.age = 22;
+        console.log(a.age);//18
+        console.log(b.age);//22
+
+        function fn (obj){
+            obj = {age:80};
+            console.log('-----------');
+            console.log(obj.age);
+            console.log('-----------');
+        }
+        fn(a);
+        console.log(a.age);//18
+        //首先执行fn（a）将31行a的地址值赋值给obj
+        //而后执行函数代码体，给obj赋值为一个新的对象，此时obj的地址值内另外开辟的新内存的地址值
+        //最后输出的a.age仍为a的地址所指内存空间中age的值
+    </script>
+</body>
+</html>
