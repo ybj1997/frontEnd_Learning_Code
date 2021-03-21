@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+</head>
+<body>
+    <!--
+        1.什么是对象？
+         *定义：多个数据的封装体，可读写
+         *用于保存多个数据的容器
+         *一个对象代表现实中的一个事物
+
+        2.为什么要用对象？
+         *统一管理多个数据
+
+        3.对象的组成
+         *属性：属性名（字符串，可以省略引号）和属性值（任意类型）
+         *方法：一种特殊的属性，属性值为函数
+
+        4.如何访问对象内部数据？ 
+         *对象.属性名
+         *对象['属性名']    
+           --使用情况：属性名中含有特殊字符
+                      属性名是一个变量 
+    -->
+    <!--
+        1.什么是函数？
+          实现特定功能的多条语句的封装体
+
+        2.为什么要用函数？
+          可以反复进行调用
+        
+        3.如何定义函数？（区别变量提升）
+          * 函数声明
+            function fn (){}
+          * 表达式
+            var fn = function (){}
+
+        4.如何调用函数？
+          *fn()
+          *var fn1 = new fn()//构造函数调用
+          *obj.fn()//作为对象的方法调用
+          *fn.call(obj)//添加为对象的方法进行调用
+
+        5.回调函数
+          
+    -->
+    <script>
+        function fn(){
+            this.xxx = 'xxx';
+            console.log(11);
+        }
+        var obj = {};
+        fn.call(obj);
+        fn.apply(obj);
+        console.log(obj.xxx);//函数中的xxx是obj的一个属性
+        
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        var abc = new Person('ybj',18);
+        console.log(abc.name);
+    </script>
+</body>
+</html>
