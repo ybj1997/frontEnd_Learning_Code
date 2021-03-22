@@ -9,8 +9,28 @@
 <body>+
     <!--
         1.函数的prototype属性
+         *每個函數都有一個prototype属性，它默认指向一个Object空对象（即：原型对象）
+         *原型对象中有一个constuctor属性，它指向函数对象
+        2.每个实例对象都有一个__proto__，可称为隐式原型（属性)
+        3.实例对象隐式原型的值，为其构造函数显示原型的值
+        4.总结：
+         *函数的prototype属性：在定义函数时自动添加，默认值是一个空Object对象
+         *实例对象的__proto__属性：在创建对象时自动添加，默认值为构造函数的prototype属性值
+         *显示原型可以直接操作，例如给原型对象添加方法等，但不能直接操作隐式原型
     -->
     <script>
+        function Fn(){}//内部语句：this.prototype = {},即Fn函数对象的prototype属性指向一个空的对象（原型对象）
+
+        console.log(Fn.prototype);//函数对象的prototype属性指向原型对象
+
+        console.log(Fn.prototype.constructor===Fn);//原型对象中的constructor属性指向函数对象
+
+        //给原型对象添加属性 ===> 实例化对象
+        var fn = new Fn();//this.__proto__ = Fn.prototype,将原型对象的地址值赋值给fn.__proto__
+        Fn.prototype.add = function(){
+            console.log('我是添加的属性');
+        }
+        fn.add()//通过实例对象的隐式原型来调用显示原型添加的方法
     </script>
 </body>
 </html>
