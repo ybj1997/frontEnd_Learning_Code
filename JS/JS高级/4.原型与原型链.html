@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 </head>
+
 <body>+
     <!--
         1.函数的prototype属性
@@ -19,18 +21,33 @@
          *显示原型可以直接操作，例如给原型对象添加方法等，但不能直接操作隐式原型
     -->
     <script>
-        function Fn(){}//内部语句：this.prototype = {},即Fn函数对象的prototype属性指向一个空的对象（原型对象）
+        function Fn() { }//内部语句：this.prototype = {},即Fn函数对象的prototype属性指向一个空的对象（原型对象）
 
         console.log(Fn.prototype);//函数对象的prototype属性指向原型对象
 
-        console.log(Fn.prototype.constructor===Fn);//原型对象中的constructor属性指向函数对象
+        console.log(Fn.prototype.constructor === Fn);//原型对象中的constructor属性指向函数对象
+        
+        console.log('----------------------');
 
         //给原型对象添加属性 ===> 实例化对象
         var fn = new Fn();//this.__proto__ = Fn.prototype,将原型对象的地址值赋值给fn.__proto__
-        Fn.prototype.add = function(){
+        Fn.prototype.add = function () {
             console.log('我是添加的属性');
         }
         fn.add()//通过实例对象的隐式原型来调用显示原型添加的方法
+        console.log('----------------------');
+
+        function foo() { };
+        console.log(foo.prototype);//变量的显示原型属性指向空Object对象
+
+        console.log(foo.prototype.constructor);//指向构造函数本身
+        //函数声明式从定义出发，相当于 var foo = new Function()，Function为foo的构造函数 
+        console.log(foo.__proto__);
+        //正常情况下，实例对象的隐式原型属性（指向空Object空对象的地址值）等于对应构造函数显示原型的属性
+        console.log(foo.prototype === foo.__proto__);//false
+        //函数自身的函数声明式与函数表达式之间，构成构造函数与实例对象的关系，不满足正常情况下的这种关系 
+        console.log(foo.__proto__.constructor);//而是指向foo的构造函数Function
     </script>
 </body>
+
 </html>
