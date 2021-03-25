@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instanceof作用原理</title>
+</head>
+<body>
+    <script>
+        /*
+        1.instanceof是如何判断的？
+          *表达式：A instanceof B
+          *如果A的隐式原型链上有与B的显示原型交叉处，则返回true否则返回false
+        */
+       function foo(){}
+       var fo = new foo();
+       console.log(fo instanceof foo);
+       console.log(fo instanceof Object);
+
+       console.log(Object);//function Object（），Object 本质是一个函数Object
+       console.log(Object.__proto__ === Function.prototype);//Object是Function函数对象的实例对象，任意函数都是Function的实例对象;Function为任意函数的构造函数
+       console.log(Object.prototype);
+       console.log(Object.prototype.__proto__);
+       var obj = new Object();
+       console.log(obj.__proto__ === Object.prototype);
+
+       console.log(Function.__proto__ === Function.prototype);//Function = new Function()
+       console.log(foo.__proto__ === Function.prototype);
+       console.log(foo.prototype === fo.__proto__);
+       console.log(foo.prototype.__proto__ === Object.prototype);
+       /*
+       
+       */
+    </script>
+</body>
+</html>
