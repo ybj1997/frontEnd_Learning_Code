@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>执行上下文栈-面试题</title>
+</head>
+<body>
+    <script>
+        /*
+        测试题一：
+        1.输出顺序：
+        2.共产生了几个执行上下文栈？
+          *五个
+          *四个为函数执行上下文，当i=4时不输出；一个全局执行上下文
+        */
+        console.log('global begin:' + i);//undefined
+       var i = 1;
+       foo(1);
+       function foo(i){
+           if (i == 4){
+              return 
+           }
+           console.log('foo() begin:'+ i);//1，2，3
+           foo(i + 1);//递归调用：在函数内部调用自己
+           console.log('foo() end:'+ i);//3,2,1
+       }
+       console.log('global end:' + i);//1
+
+       /*
+       测试题二：先执行变量提升，再执行函数提升
+       */
+      function a(){}
+      var a;
+      console.log(typeof a);//'function'
+
+
+      /*
+      测试题三：
+      */
+      if(!(b in window)){
+          var b = 1;
+      }
+      console.log(b);//undefined
+
+      /*
+      测试题四：
+      */
+     var c = 1;
+     function c(c){
+         console.log(c);
+     }
+     c(2);//报错
+    </script>
+</body>
+</html>

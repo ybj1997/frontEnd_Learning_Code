@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>测试1</button>
+    <button>测试2</button>
+    <button>测试3</button>
+</body>
+<script>
+    let btns = document.querySelectorAll('button');
+    //for(var i = 0;i < btns.length;i++){
+    //    let index = i;
+    //    btns[i].addEventListener('click',function(){
+    //        alert('您正在点击第'+(index+1)+'个按钮')
+    //    })
+    //}
+
+    //闭包
+    for(var i = 0;i < btns.length;i++){
+        (function(i){
+            btns[i].addEventListener('click',function(){
+            alert('您正在点击第'+(i+1)+'个按钮')
+        })
+        })(i)
+    }
+    /*
+    1.如何产生闭包？
+      *当一个嵌套的内部（子）函数引用了嵌套外部（父）函数的变量（函数）时，就产生了闭包
+    2.闭包到底是什么？
+      *理解一：闭包是嵌套的内部（子）函数
+      *理解二：包含被引用变量的对象
+               闭包存在于嵌套的内部函数中
+    3.产生条件
+      *函数嵌套
+      *嵌套中的内部函数引用了外部函数的变量（或者函数）
+    */
+   function fn1(){
+       var a =2;
+       function fn2(){//执行函数定定义时，就会产生闭包，不一定非要执行这个函数
+           console.log(a);
+       }
+   }
+   fn1()
+</script>
+
+</html>

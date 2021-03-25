@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>执行上下文</title>
+</head>
+<body>
+    <script>
+        /*执行上下文是变量提升和函数提升的根本原理*/
+        /*
+        1.全局执行上下文
+          *在执行全局代码前将window确定为全局执行上下文
+          *对全局数据进行预处理（全局代码执行前的预处理 ）
+             var定义的全局变量===>赋值为undefined，并添加为window对象的属性
+             function声明函数的全局函数==>添加为window对象的方法
+             this==>赋值为window对象
+          *开始执行全局代码
+        */
+        console.log(window);//window
+        console.log(a);//undefined
+        window.fn()//abc
+        console.log(this);//window
+         var a = 1;
+         function fn (){
+             console.log('abc');
+         }
+         console.log('----------------------');
+         /*
+         2.函数执行上下文
+           *在调用函数，创建对应的函数执行上下文对象，发生在准备执行函数体之前。
+           *对全局数据进行预处理
+             形参变量==>赋值（实参）==>添加为执行上下文的属性
+             arguments==>赋值（实参列表），添加为执行上下文的属性
+             var定义的局部变量==>undefined，添加为执行上下文的属性
+             function声明函数==>添加为执行上下文的方法
+             this==>赋值（调用函数的对象）
+           *开始执行上下文
+         */
+        function fn(a1){
+            console.log(a1);
+            console.log(a2);
+            console.log(a3);
+            console.log(this);
+            console.log(arguments);//伪数组[2,3]
+            var a2 = 3;
+            function a3(){
+                console.log('a3()');
+            }
+        }
+        fn()//调用函数时，才产生执行上下文对象
+
+        /*
+        3.执行上下文栈
+          执行顺序是栈的特点，先进后执行，后进先执行
+        */
+    </script>
+</body>
+</html>

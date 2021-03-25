@@ -9,7 +9,7 @@
 <body>
      <script>
          //测试题一
-         var A = function(){}
+         function A(){}
          A.prototype.n = 1; 
          var b = new A()
          A.prototype = {
@@ -18,6 +18,21 @@
          }
          var c = new A();
          console.log(b.n,b.m,c.n,c.m);//1，undefined,2,3
+         //查找对象，找不到时，报错;查找属性，找不到时，undefined
+
+         //测试题二
+         function F(){}
+         Object.prototype.a=function(){
+             console.log('a()');
+         }
+         Function.prototype.b=function(){
+             console.log('b()');
+         }
+         var f = new F();
+         f.a();//a()
+         //f.b();报错
+         F.a();//a()
+         F.b();//b()
      </script>
 </body>
 </html>
