@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内存溢出</title>
+</head>
+<body>
+    <!--
+        1.内存溢出
+          *一种程序运行出现的错误
+          *原因：当程序运行需要的内存超过了剩余的内存时，就会出现内存溢出的错误
+        2.内存泄漏（程序仍可以运行）
+          *占用的内存没有及时释放
+          *内存泄漏积累多了就容易导致内存溢出
+          *常见的内存泄漏：
+            ---意外的全局变量
+            ---没有及时清理的计时器或回调函数(匿名定时器清理不掉)
+            ---闭包
+    -->
+    <script>
+        //1.内存泄漏
+        var obj = {};
+        for(var i = 0;i < 100000;i++){
+            obj[i] = new Array(1000000)
+            console.log('调用了才会占用内存');
+        }
+    </script>
+</body>
+</html>
