@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        方式一：原型链继承
+        方法：子类型的原型对象为父类型的实例对象。
+        原因：子类型就可以通过原型链查找到父类型的方法，这样就实现了原型链的继承
+    -->
+    <script>
+        //父类型
+        function supper() {
+            this.supProp = 'supper property'
+        }
+        supper.prototype.showsupprop = function () {
+            console.log(this.supProp);
+        }
+        //子类型（继承父类型的方法）
+        //父类型的方法在原型对象中，子类型想继承并且能够调用，就要通过原型链查找
+        //而添加到子类型的原型链中,就要通过显示原型来添加，Sub.prototype.__proto__ = showsupper(),这样：Sub.prototype就成了supper的实例对象了 
+        function Sub() {
+            this.subProp = 'sub property'
+        }
+        Sub.prototype = new supper();//将子类型的原型对象作为父类型的实例对象，则通过Sub.prototype.__proto__ = supper.prototype.showsupprop这个原型链
+        Sub.prototype.showsubprop = function () {
+            console.log(this.subProp);
+        }
+        var sub = new Sub();
+        sub.showsupprop();//子类型的原型能够通过原型链看到父类型的方法
+        //原型链继承：让子类型能够通过实例对象查找到父类型的原型对象上的方法
+    </script>
+</body>
+</html>
