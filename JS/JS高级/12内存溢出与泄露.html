@@ -22,9 +22,10 @@
     <script>
         //1.内存泄漏
         var obj = {};
-        for(var i = 0;i < 100000;i++){
-            obj[i] = new Array(1000000)
+        for(var i = 0;i < 1000;i++){
+            obj[i] = new Array(10000)
             console.log('调用了才会占用内存');
+            console.log(obj[i]);
         }
     </script>
 </body>
