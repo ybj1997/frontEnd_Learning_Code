@@ -1,7 +1,7 @@
 window.addEventListener('load',function(){
-    let mask = document.querySelector('.mask');
-    let big = document.querySelector('.big');
-    let preview_img = document.querySelector('.preview_img');
+    let mask = document.querySelector('.mask');//遮罩层
+    let big = document.querySelector('.big');//放大图
+    let preview_img = document.querySelector('.preview_img');//商品图
     /*(1)第一步当鼠标经过时，遮挡层显示，鼠标离开时遮挡层消失*/
     preview_img.addEventListener('mouseover',function(){
         mask.style.display = 'block';
