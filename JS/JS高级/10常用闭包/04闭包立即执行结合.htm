@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    ////传统执行方式：
+    //function fn(i) {
+    //    return function () {
+    //        console.log(i);
+    //    }
+    //}
+    //for(var i=0;i<5;i++){
+    //    setTimeout(fn(i),i*1000)
+    //}
+
+    //闭包与立即执行结合
+    for(var i=0;i<5;i++){
+        setTimeout((
+            function (i) {
+                return function () {
+                    console.log(i);
+                }
+            }
+        )(i),i*1000)
+    }
+</script>
+</html>
