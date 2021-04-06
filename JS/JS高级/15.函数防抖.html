@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--函数防抖主要用于频繁触发的同一个函数，为防止用户重复多余触发-->
+    <button>点击重新计时</button>
+</body>
+<script>
+    const btn = document.querySelector('button');
+    btn.addEventListener('click',debounce(key_fn,1000));//参数为目标函数和延迟时间
+
+    //想要防抖的目标函数
+     function key_fn() { 
+         console.log('触发一次就够了！');
+         console.log(this);
+     }
+
+     //防抖函数
+     function debounce(func,time) {
+         let timer;
+         return function () {
+             let new_this = this;
+             clearTimeout(timer);
+             timer = setTimeout(function () {
+                 func.call(new_this);
+                 console.log(new_this);
+             },time);
+         }
+     }
+</script>
+</html>
