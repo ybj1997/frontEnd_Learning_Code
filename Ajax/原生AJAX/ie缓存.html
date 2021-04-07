@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result{
+            width: 300px;
+            height: 100px;
+            border: 1px solid #258;
+        }
+    </style>
+</head>
+<body>
+    <button>点击发送请求</button>
+    <div id="result"></div>
+</body>
+<script>
+    const btn = document.querySelector('button');
+    const div = document.querySelector('#result');
+    btn.addEventListener('click',function(){
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET','http://127.0.0.1:8000/json-server?time='+Date.now());
+        xhr.send();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                if (status >= 200&&status<300) {
+                    let data = JSON.parse(xhr.response);
+                    console.log(data.name);
+                    div.innerHTML = data.name;
+                }
+            }
+        }
+    })
+</script>
+</html>

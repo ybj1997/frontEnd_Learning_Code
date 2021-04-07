@@ -5,9 +5,13 @@ const express = require('express');
 const app = express();
 
 //3.创建路由规则
-app.get('/',(request,response)=>{
-    //设置响应
-    response.send('响应测试。。');
+app.get('/server',(request,response)=>{
+    //设置相应头 设置允许跨域
+    response.setHeader('Access-Control-All-Origin','*');
+    //设置相应头
+    response.setHeader('Access-Control-All-Headers','*')
+    //设置响应体
+    response.send('String');
 });
 
 //4.监听端口启动服务

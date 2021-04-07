@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<button>发送请求</button>
+<button>取消请求</button>
+<script>
+    //超时处理
+    xhr.timeout = 2000;
+    //超时回调
+    xhr.ontimeout = ()=>{
+        alert('网络超时！')
+    }
+    //网络异常回调
+    xhr.onerror = ()=>{
+        alert('网络异常！')
+    }
+    //手动取消请求
+    let btns = document.querySelector('button');
+    var x = null;
+    btns[0].onclick = function(){
+        let x = new XMLHttpRequest();
+        x.open('GET','/url');
+        x.send();
+    }
+    btns[1].onclick = function () {
+        x.abort();
+    }
+
+    //重复请求防抖
+    var x = null;
+    var isSending = false;
+    btns[0].onclick = function () {
+        if(isSending) x.abort();
+        let x = new XMLHttpRequest();
+        //修改状态码
+        isSending = true;
+        x.open('GET','/url');
+        x.send();
+        x.onreadystatechange = ()=>{
+            if(xhr.readyState === 4){
+                //再次修改状态变量
+                isSending = false;
+                if (status >= 200&&status<300) {
+                    let data = JSON.parse(xhr.response);
+                    div.innerHTML = data.name;
+                }
+            }
+        }
+    }
+</script>
+</html>
