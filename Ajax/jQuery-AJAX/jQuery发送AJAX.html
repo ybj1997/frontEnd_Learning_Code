@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .btn{
+            display: flex;
+            flex-direction: row;
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            text-align: right;
+            font-size: 15px;
+            outline: none;
+            border: none;
+            margin: 10px;
+            line-height: 50px;
+        }
+        .a{
+            background-color: green;
+        }
+        .b{
+            background-color: blue;
+        }
+        .c{
+            background-color: rgb(250, 197, 25);
+        }
+    </style>
+</head>
+<body>
+    <h2>jQuery发送AJAX请求</h2><hr>
+    <button class="a btn">GET</button>
+    <button class="b btn">POST</button>
+    <button class="c btn">通用方法</button>
+</body>
+<script>
+    $('button').eq(0).click(()=>{
+        $.get('http://127.0.0.1:8000/jQuery',{a:100,b:200},function (data) {
+            console.log(data);
+        })
+    })
+    $('button').eq(1).click(()=>{
+        $.post('http://127.0.0.1:8000/jQuery',{a:100,b:200},function (data) {
+            console.log(data);
+        })
+    })
+    $('button').eq(2).click(()=>{
+        $.ajax({
+            //url
+            url:'http://127.0.0.1:8000/jQuery',
+            //参数
+            data:{a:100,b:200},
+            //请求类型
+            type:'GET',
+            //响应体结果
+            dataType:'json',
+            //回调
+            success:function(data){
+                console.log(data);
+            },
+            //失败(超时和网络异常)回调
+            error:function(){
+                console.log('出错了！');
+            },
+            //超时时间
+            timeout:2000,
+            //头信息
+            Headers:{
+                a:300,
+                b:400
+            }
+        })
+    })
+</script>
+</html>
