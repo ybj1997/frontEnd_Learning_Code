@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.创建一个Promise实例对象
+        let p = new Promise((resolve,reject)=>{
+            //2.执行异步操作
+
+            //3.1 执行成功调用resolved（value）
+            //3.2 执行失败调用rejeced（reason）
+        })
+
+        p.then(
+            value => {//成功接收到的参数
+
+            },
+            reson =>{//失败接收到的参数
+
+            }
+        )
+    </script>
+    <!-------------Promise实例操作----------------->
+    <script>
+        //1.创建一个Promise实例对象
+        let p = new Promise((resolve,reject)=>{
+            //2.执行异步操作
+            setTimeout(()=>{
+                let x = Date.now();
+            //3.1 执行成功调用resolved（value）
+                if(x%2 === 1){
+                    resolve('成功的数据为：time='+x)
+                }
+            //3.2 执行失败调用rejeced（reason）
+                else{
+                    reject('失败的数据为：time='+x)
+                }
+            },1000)  
+        })
+        //4.接受并指定回调函数
+        p.then(
+            value => {//成功接收到的参数   onresolved回调函数
+                console.log('回调成功啦！',value);
+            },
+            reason =>{//失败接收到的参数   onrejected回调函数
+                console.log('失败回调咯~',reason);
+            }
+        )
+    </script>
+</body>
+</html>
