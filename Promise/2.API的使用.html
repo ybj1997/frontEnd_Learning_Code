@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.Promise.prototype.then()和Promise.prototype.catch()
+        let p = new Promise((resolve,reject)=>{
+            setTimeout(
+                resolve('成功！')
+                //reject('失败~')
+            ,1000)
+        })
+        .then(
+            value=>{
+                console.log('回调函数',value);
+            }
+        )
+        .catch(
+            reason=>{
+                console.log('回调函数',reason);
+            }
+        )
+
+        //2.Promise.resolve()和Promise.reject()
+        let p1 = new Promise((resolve,reject)=>{
+            resolve(1)
+        })
+        let p11 = Promise.resolve(1);
+        console.log(p11,p1);//产生一个成功值为1的promise对象
+        
+        let f = new Promise((resolve,reject)=>{
+            reject(8)
+        }) 
+        let f1 = Promise.reject(2);
+        console.log(f,f1);//产生一个拒绝值为2的promise对象
+
+        //3.Promise.prototype.then()和Promise.prototype.catch()
+        p11.then(
+            value=>console.log(value)
+        )
+        f1.catch(
+            reason=>console.log(reason)
+        )//Promise.prototype.catch()的使用
+        f1.then(
+            null,
+            reason=>console.log(reason)
+        )
+        
+        //4.Promise.all([])
+        let All_p = Promise.all([p11,f,p1,f1]);//全真才真，一假则假
+        All_p.then(
+            values => {
+                console.log('onResolved()'+values);//全真返回数组
+            },
+            reasons => {
+                console.log('onRejected()'+reasons);//一假返回的是第一个假
+            }
+        )
+
+        //5.Promise.race([])返回最先完成状态值，影响因素包括延迟和排列顺序
+    </script>
+</body>
+</html>
