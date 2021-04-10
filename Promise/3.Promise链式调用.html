@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        promise.then()调用返回一个新的promise实例对象的状态由什么决定？
+
+            1.简单判断：promise的状态可以通过then里执行那个回调函数判断
+            2.详细判断：如果链式调用，下一个then()为上一个promise.then()返回新promise对象的判断依据
+                   抛出异常，状态变为rejected，reason为抛出的值
+                   返回一个非promise的值，状态变为resolved，value为返回promise的值
+                   返回一个新的promise，这个promise就是新的promise的结果
+    -->
+    <script>
+        new Promise((resolve,reject)=>{
+            resolve(1)
+            //reject(1)
+        }).then(
+            value => {
+                console.log('onResolved()1',value);
+                //return 1
+                //return Promise.resolve(2)
+                //return Promise.reject(3)
+                //throw 4
+            },
+            reason => {
+                console.log('onRejected()1',reason);
+            }
+        ).then(
+            value =>{
+                console.log('onResolved',value);
+            },
+            reason =>{
+                console.log('onRejected',reason);
+            }
+        )
+    </script>
+</body>
+</html>
