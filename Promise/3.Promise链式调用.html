@@ -31,7 +31,8 @@
             reason => {
                 console.log('onRejected()1',reason);
             }
-        ).then(
+        )//返回一个新的Promise实例对象
+        .then(
             value =>{
                 console.log('onResolved',value);
             },
