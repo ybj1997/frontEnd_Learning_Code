@@ -34,11 +34,11 @@
                 let x = Date.now();
             //3.1 执行成功调用resolved（value）
                 if(x%2 === 1){
-                    resolve('成功的数据为：time='+x)
+                    resolve('成功的数据为：time='+x)//resolve(value)
                 }
             //3.2 执行失败调用rejeced（reason）
                 else{
-                    reject('失败的数据为：time='+x)
+                    reject('失败的数据为：time='+x)//reject(reason)
                 }
             },1000)  
         })
