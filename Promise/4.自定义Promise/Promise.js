@@ -135,7 +135,13 @@
       --->返回一个成功的Promise对象，其中value指定
    */
    Promise.resolve = function (value) {
-
+      return new Promise((resolve,reject) =>{
+         if(value instanceof Promise){
+            value.then(resolve,reject);
+         }else{
+            resolve(value)
+         }
+      })
    }
 
    /*
@@ -143,7 +149,9 @@
       --->返回一个失败的Promise对象，其中reason指定
    */
    Promise.reject = function (reason) {
-
+      return new Promise((resolve,reject)=>{
+         reject(reason)
+      })
    }
 
    /*
