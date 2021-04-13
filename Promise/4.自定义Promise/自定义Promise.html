@@ -9,7 +9,7 @@
 </head>
 <body>
 </body>
-<script>
+<!--<script>
     let p = new Promise((resolve,reject)=>{
             reject(9)
     }).then(
@@ -43,5 +43,24 @@
              console.log('onRejected1()'+reason); 
         }
         )
+</script>-->
+<script>
+    let p1 = Promise.resolve(1);
+    let p2 = Promise.resolve(new Promise((resolve,reject)=>resolve(1)));
+    let p3 = Promise.reject(3);
+    let p4 = Promise.resolve(Promise.reject(4))
+    p1.then(
+        value=>console.log(value)
+    )
+    p2.then(
+        value=>console.log(value)
+    )
+    p3.catch(
+        reason=>console.log(reason)
+    )
+    p4.then(
+        value=>console.log(value),
+        reason=>console.log(reason)
+    )
 </script>
 </html>
