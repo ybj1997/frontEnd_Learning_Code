@@ -63,6 +63,7 @@
       --->返回一个新的Promise对象
    */
    Promise.prototype.then = function (onResolved, onRejected) {
+      //默认成功，继续向下传递
       onResolved = typeof 'function' ? onResolved : value => value; 
       //指定默认的失败的回调函数（异常传透的关键）
       onRejected = typeof 'function' ? onRejected : reason => {throw reason}; 
@@ -73,22 +74,22 @@
 
          //封装回调函数
          function handle(callback) {
-            /*状态改变为成功后，调用onResolved(value)回调函数，有三种结果：
+            /*状态改变为（成功/失败）后，调用[onResolved(value)/onRejected(reason)]回调函数，有三种结果：
               1.如果抛出异常，return的Promise状态改变为rejected，reason为error
               2.如果回调函数返回的为非Promise，return默认成功，状态改变为resolved，value为result
               3.如果回调函数返回的是Promise，return的Promise是什么结果，这个Promise就是什么结果
             */
-            let result = callback(_this.data);//保存回调函数的值
             try {
+               let result = callback(_this.data);//保存回调函数的值
                if (result instanceof Promise) {//当这个result是一个Promise对象时
                   //返回的Promise的结果，就是result的结果，
                   //如果当前这个Promise成功，则返回的Promise调用resolve，并且值为value
                   //如果当前这个Promise失败，则返回的Promise调用reject，并且值为reason
-                  result.then(//Promise.then()得到当前result的结果，
-                     value => resolve(value),//result成功，返回的新Promise执行resolve()
-                     reject => reject(reason)//result失败，返回的新Promise执行reject()
-                  )
-                  //简化写法rusult.then(resolve,reject);
+                  //result.then(//Promise.then()得到当前result的结果，
+                  //   value => resolve(value),//result成功，返回的新Promise执行resolve()
+                  //   reason => reject(reason)//result失败，返回的新Promise执行reject()
+                  //)
+                  result.then(resolve,reject);
                } else {
                   resolve(result)
                }
@@ -99,7 +100,7 @@
 
          if (_this.status === PENDING) {
             //当状态为pending是保存回调函数到callback，不执行
-            //并推到Promise.callback属性里，这样才能
+            //并推到Promise.callback属性里，这样才能异步执行执行器函数
             _this.callback.push({
                onResolved() {
                   handle(onResolved)
