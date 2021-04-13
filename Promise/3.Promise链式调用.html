@@ -12,7 +12,7 @@
 
             1.简单判断：promise的状态可以通过then里执行那个回调函数判断
             2.详细判断：如果链式调用，下一个then()为上一个promise.then()返回新promise对象的判断依据
-                   抛出异常，状态变为rejected，reason为抛出的值
+                   抛出异常，状态变为rejected，reason为抛出的error
                    返回一个非promise的值，状态变为resolved，value为返回promise的值
                    返回一个新的promise，这个promise就是新的promise的结果
     -->

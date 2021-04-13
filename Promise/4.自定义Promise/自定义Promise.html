@@ -11,24 +11,29 @@
 </body>
 <script>
     let p = new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            resolve(1)
-        },10)
-    })
-    p.then(
+            reject(1)
+    }).then(
         value => {
-            console.log(value);
+            console.log('onResolved1()'+value);
         },
         reason =>{
-             console.log(reason);
+             console.log('onRejected1()'+reason); 
+             //return 9
+             throw 3
         }
-    )
-    p.then(
+    ).then(
         value => {
-            console.log(value);
+            console.log('onResolved2()'+value);
         },
         reason =>{
-             console.log(reason);
+             console.log('onRejected2()'+reason);
+        }
+    ).then(
+        value => {
+            console.log('onResolved3()'+value);
+        },
+        reason =>{
+             console.log('onRejected3()'+reason);
         }
     )
 </script>
