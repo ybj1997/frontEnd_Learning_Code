@@ -159,7 +159,27 @@
       --->返回一个Promise对象，只有数组中的实例对象---‘一假全假，全真才真’
    */
    Promise.all = function (promises) {
-
+      const values = new Array(promises.length);//定义一个长度为Promise对象数的数组，用来保存value
+      let resolvedCount = 0;//成功的标志数
+      return new Promise((resolve,reject)=>{
+          promises.forEach((p,index)=>{
+             p.then(//对每个Promise读值
+               value =>{
+                  resolvedCount++;
+                  //如果p成功，就将这个p的value值保存到values数组中
+                  values[index] = value;
+                  //如果全部成功了，就返回的promise就成功
+                  if(resolvedCount === promises.length){
+                     resolve(values)
+                  }
+               },
+               //对每个promise读值，有失败，则返回的promise失败
+               reason=>{
+                  reject(reason)
+               }
+             )
+          })
+      })
    }
 
    /*
