@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--
+        微队列优先于宏队列执行
+          ===>JS引擎执行完同步任务后，每次准备取出一个宏队列中的任务之前，都要先执行微队列的为执行的所有任务
+    -->
+    <script>
+        setTimeout(() => {
+            console.log('定时器回调2');
+            Promise.resolve(1).then(
+                value => console.log('定时器回调嵌套期约回调' + value)
+            )
+        }, 0)
+        //
+        setTimeout(() => {
+            console.log('定时器回调');
+        }, 0)
+        //
+        Promise.resolve(1).then(
+            value => console.log('期约回调' + value)
+        )
+        //
+        
+    </script>
+</body>
+
+</html>
