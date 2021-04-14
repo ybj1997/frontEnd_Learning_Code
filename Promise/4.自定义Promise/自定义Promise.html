@@ -46,19 +46,31 @@
 </script>-->
 <script>
     let p1 = Promise.resolve(1);
-    let p2 = Promise.resolve(new Promise((resolve,reject)=>resolve(1)));
-    let p3 = Promise.reject(3);
-    let p4 = Promise.resolve(Promise.reject(4))
-    p1.then(
-        value=>console.log(value)
+    let p3 = Promise.resolve(new Promise((resolve,reject)=>{
+        setTimeout(()=>resolve(9),1000)
+    }));
+    let p4 = Promise.resolve(Promise.resolve(4))
+    let p5 = Promise.reject(8)
+    let All_p = Promise.all([p1,p3,p4,p5])
+    All_p.then(
+        value=>{console.log(value)},
+        reason=>{console.log(reason)}
     )
-    p2.then(
-        value=>console.log(value)
-    )
-    p3.catch(
-        reason=>console.log(reason)
-    )
-    p4.then(
+    //p1.then(
+    //    value=>console.log(value)
+    //)
+    //p2.then(
+    //    value=>console.log(value)
+    //)
+    //p3.catch(
+    //    reason=>console.log(reason)
+    //)
+    //p4.then(
+    //    value=>console.log(value),
+    //    reason=>console.log(reason)
+    //)
+    let Race_p = Promise.race([p3,p5,p1,p4])
+    Race_p.then(
         value=>console.log(value),
         reason=>console.log(reason)
     )

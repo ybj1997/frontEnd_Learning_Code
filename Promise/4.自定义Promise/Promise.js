@@ -163,7 +163,7 @@
       let resolvedCount = 0;//成功的标志数
       return new Promise((resolve,reject)=>{
           promises.forEach((p,index)=>{
-             p.then(//对每个Promise读值
+             p.then(//对每个Promise读值(改善：Promise.resolve(p))
                value =>{
                   resolvedCount++;
                   //如果p成功，就将这个p的value值保存到values数组中
@@ -187,7 +187,14 @@
       --->返回一个Promise对象，其结果由第一个完成的Promise决定
    */
    Promise.race = function (promises) {
-
+      return new Promise((resolve,reject)=>{
+         promises.forEach((p,index)=>{
+            p.then(//改善：Promise.resolve(p)
+               value=>resolve(value),
+               reason=>reject(reason)
+            )
+         })
+      })
    }
    /*向外暴露的Promise函数*/
    window.Promise = Promise;
