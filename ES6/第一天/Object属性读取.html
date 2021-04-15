@@ -13,15 +13,16 @@
             age : 35
         }
         //对象属性遍历
-        //for (key in obj){
-        //    console.log(obj[key])
-        //}
+        for (let key in obj){
+            console.log(obj[key])
+        }
         //为对象添加属性
-        //obj.gender = '男';
-        //console.log(obj['gender'])
+        obj.gender = '男';
+        console.log(obj['gender'])//男
+        console.log(obj.gander);//undefined
+        console.log(obj);
         //删除属性
-        //delete obj.age;
-        
+        delete obj.age;
     </script>
 </body>
 </html>
