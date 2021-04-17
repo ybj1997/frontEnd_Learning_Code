@@ -27,8 +27,9 @@
     </script>
     <!-------------Promise实例操作----------------->
     <script>
+        
         //1.创建一个Promise实例对象
-        let p = new Promise((resolve,reject)=>{
+        let p1 = new Promise((resolve,reject)=>{
             //2.执行异步操作
             setTimeout(()=>{
                 let x = Date.now();
@@ -43,13 +44,16 @@
             },1000)  
         })
         //4.接受并指定回调函数
-        p.then(
+        p1.then(
             value => {//成功接收到的参数   onresolved回调函数
                 console.log('回调成功啦！',value);
+                return Promise.resolve(4)
             },
             reason =>{//失败接收到的参数   onrejected回调函数
                 console.log('失败回调咯~',reason);
             }
+        ).then(
+            value=>console.log(value)
         )
     </script>
 </body>

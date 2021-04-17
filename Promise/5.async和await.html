@@ -29,7 +29,8 @@
         //返回的Promise的结果由async函数执行的结果决定
         async function fn1() {
             //return 1
-            throw 2
+            //throw 2
+            return Promise.reject(3)
         }
         const result = fn1();
         result.then(

@@ -12,16 +12,22 @@
     <script>
         //向对象中添加Symbol类型方法： up down
         let game = {
-
-            name: '俄罗斯方块'
+            name: '俄罗斯方块',
+            up:function(){
+                console.log('已经存在up方法');
+            },
+            donw:function(){
+                console.log('已经存在down方法');
+            }
         }
 
+        //利用Symbol安全的向对象中扩展两个自己命名的方法
         const methods = {
             up: Symbol(),
             down: Symbol()
         }
 
-        //给ganme扩展方法
+        //方式一：
         game[methods.up] = function(){
             console.log('名字叫up的这个方法就是这个函数');
         };
@@ -34,11 +40,12 @@
         //添加方式二：
         let game2 = {
             name:'狼人杀',
-            [Symbol('say')]:function(){
-                console.log('我可以发言！');
+            say:'属性值为唯一的say',
+            [Symbol('属性值为symbol')]:function(){
+                console.log('属性值为symbol');
             },
-            [Symbol('zibao')]:function(){
-                console.log('我可以自爆！');
+            [Symbol('属性值为symbol')]:function(){
+                console.log('属性值为symbol');
             }
         }
         console.log(game2);
