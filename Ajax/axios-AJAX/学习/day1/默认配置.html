@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios基本使用</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">基本使用</h2>
+        <button class="btn btn-primary">发送GET请求</button>
+        <button class="btn btn-warning">发送POST请求</button>
+        <button class="btn btn-success">发送PUT请求</button>
+        <button class="btn btn-danger">发送DELETE请求</button>
+    </div>
+</body>
+<script>
+    const btn = document.querySelectorAll('button');
+
+    axios.defaults.method = 'GET';
+    axios.defaults.baseURL = 'http://localhost:3000';
+    axios.defaults.params = {id:100};
+
+    btn[0].addEventListener('click',()=>{
+        axios({
+            url:'/post',
+        }).then(
+            value=>console.log(value)
+        )
+    })
+</script>
+</html>

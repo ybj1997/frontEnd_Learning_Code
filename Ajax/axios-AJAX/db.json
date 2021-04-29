@@ -1,0 +1,49 @@
+{
+  "post": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "新增post",
+      "author": "allen"
+    },
+    {
+      "title": "利用put修改请求",
+      "author": "allen",
+      "id": 3
+    },
+    {
+      "title": "利用post上传内容",
+      "author": "allen",
+      "id": 4
+    },
+    {
+      "title": "利用post上传内容",
+      "author": "allen",
+      "id": 5
+    },
+    {
+      "title": "利用post上传内容",
+      "author": "allen",
+      "id": 6
+    },
+    {
+      "title": "利用post上传内容",
+      "author": "allen",
+      "id": 7
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

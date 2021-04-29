@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios基本使用</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">基本使用</h2>
+        <button class="btn btn-primary">发送GET请求</button>
+        <button class="btn btn-warning">发送POST请求</button>
+        <button class="btn btn-success">发送PUT请求</button>
+        <button class="btn btn-danger">发送DELETE请求</button>
+    </div>
+</body>
+<script>
+    const btn = document.querySelectorAll('button');
+    btn[0].addEventListener('click',()=>{
+        axios({
+            method:'GET',
+            url:'http://localhost:3000/post/1',
+    
+        }).then(
+            value=>console.log(value)
+        )
+    })
+    //利用post添加一篇新的文章
+    btn[1].addEventListener('click',()=>{
+        axios({
+            method:'POST',
+            url:'http://localhost:3000/post',
+            data:{
+                title:'利用post上传内容',
+                author:'allen'
+            }
+        }).then(
+            value=>console.log(value)
+        )
+    })
+    //利用put修改一篇新的文章，需要添加id来指定文章
+    btn[2].addEventListener('click',()=>{
+        axios({
+            method:'PUT',
+            url:'http://localhost:3000/post/3',
+            data:{
+                title:'利用put修改请求',
+                author:'allen'
+            }
+        }).then(
+            value=>console.log(value)
+        )
+    })
+    //利用delete删除一篇添加id的指定文章
+    btn[3].addEventListener('click',()=>{
+        axios({
+            method:'DELETE',
+            url:'http://localhost:3000/post/6',
+        }).then(
+            value=>console.log(value)
+        )
+    })
+</script>
+<!--
+    其他还有一些axios的方法可以实现 
+-->
+</html>
