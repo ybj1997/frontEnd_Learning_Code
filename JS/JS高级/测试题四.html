@@ -16,7 +16,7 @@
             name: 'My Object!',
             getNameFunc: function () {
                 return function () {
-                    return this.name;
+                    return this.name;//闭包this指向window
                 }
             }
         };

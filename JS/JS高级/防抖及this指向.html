@@ -11,24 +11,27 @@
     <button>点击重新计时</button>
 </body>
 <script>
+    //1.触发事件 2.设置延时 3.延时内再次触发便清除延时
     const btn = document.querySelector('button');
     btn.addEventListener('click',debounce(key_fn,1000));//参数为目标函数和延迟时间
 
     //想要防抖的目标函数
      function key_fn() { 
          console.log('触发一次就够了');
-         //console.log(this);
+         console.log(this);//这里的this是调用函数的btn
      }
 
      //防抖函数
      function debounce(func,time) {
          let timer;
-         return function () {
-             let new_this = this;
+         console.log(this);//在执行同步代码时，debounce在全局window下调用，因此后面使用this为window
+         return function () {//return的Fn是btn调用的
+             let new_this = this;//因为回调的原因，运行时已经在window对象下，因此要在settimeout执行前将this保存下来
              clearTimeout(timer);
              timer = setTimeout(function () {
-                 func.call(new_this);
-                 console.log(new_this);
+                 func.call(new_this);//再利用call方法将this绑定到调用key_fn函数的按钮上
+                 console.log(new_this);//这里的this是调用return函数的btn
+                 //console.log(this);//这里的this就是调用debounce的window
              },time);
          }
      }
