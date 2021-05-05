@@ -1,8 +1,12 @@
-(function(){
+(function () {
     function Axios(config){
         this.config = config;
+        this.intercepters = {
+            request:{},
+            response:{}
+        }
     }
-
+    
     Axios.prototype.request = function(config){
         //发送请求
         let promise = Promise.resolve(config);
@@ -32,7 +36,7 @@
             xhr.send();
             xhr.onreadystatechange = function () {
                 if(xhr.readyState === 4){
-                    if(status >=200&&status<=300){
+                    if(xhr.status >=200 && xhr.status<=300){
                         resolve({
                             config:config,
                             data:xhr.response,
@@ -43,14 +47,38 @@
                         });
                     }else{
                         reject(
-                            new Error('请求失败')
+                            console.log('请求失败')
                         );
                     }
                 }
             }
         })
     }
-
-    //创建axios函数
-    let axios = Axios.prototype.request.bind(null);
-})()
+ 
+    Axios.prototype.get = function(config){
+        return this.request({
+            method:'GET'
+        })
+    }
+ 
+    Axios.prototype.post = function(config){
+        return this.request({
+            method:'POST'
+        })
+    }
+ 
+    function createInstance(config){
+        //实例化一个对象
+        let Obj = new Axios(config);
+        //instance是一个函数，可以使用instance({})调用
+        let instance = Axios.prototype.request.bind(Obj);
+        Object.keys(Axios.prototype).forEach(key=>{
+            instance[key] = Axios.prototype[key].bind(Obj);
+        });
+        Object.keys(Obj).forEach(key => {
+            instance[key] = Obj[key];
+        });
+        return instance;
+    }
+    window.axios = createInstance();
+ })()
