@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios基本使用</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="page-header">基本使用</h2>
+        <button class="btn btn-primary">发送请求</button>
+        <button class="btn btn-warning">取消请求</button>
+    </div>
+</body>
+<script>
+    //axios对象实例化有助于同时向多个API发送请求时
+    const btn = document.querySelectorAll('button');
+    var cancel = null;
+    btn[0].addEventListener('click', () => {
+        if (cancel != null) {
+            cancel();
+        }
+        let timer = setTimeout(() => {
+            axios({
+                url: 'http://localhost:3000/post',
+                method: 'GET',
+                cancelToken: new axios.CancelToken(c => {
+                    cancel = c;
+                })
+            }).then(
+                value => { 
+                    console.log(value);
+                     cancel = null;
+                }
+            )
+        })
+    })
+
+    btn[1].addEventListener('click', () => {
+        cancel();
+    })
+</script>
+
+</html>
