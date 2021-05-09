@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./合并模块.js" type='module'></script>
+    <script src="./app.js" type='module'></script>
 </head>
 <body>
     <!--
         1.common.js利用module.exports和exports来向外暴露一个对象module
-          ====>module.exports改变对象的属性，语法：module.exports = value
-          ====>单独使用exports添加对象的属性，语法：exports.value
+          ====>module.exports改变对象exports的属性，语法：module.exports = value(value为任意类型数据)
+          ====>单独使用exports给exports对象添加属性，语法：exports.xxx = value
                不能用：exports = value,因为这样修改的是exports的地址值
 
-        2.利用import来引入暴露的对象，
+        2.利用require来引入暴露的对象，语法：const value = require('路径')
     -->
 </body>
 <script>
