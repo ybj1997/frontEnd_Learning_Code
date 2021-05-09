@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6引进全新数据类型Symbol</title>
+    <!---
+        1.Symbol的值是唯一的，用来解决命名冲突的问题
+        2.Symbol值不能与其他数据进行运算
+        3.Symbol定义的对象不能用for...in循环遍历，但是可以使用
+        Reflect.ownKeys来获取对象的所有键名
+    -->
+</head>
+<body>
+    <script>
+        //创建Symbol
+        let s = Symbol('第一个Symbol！');
+        let s1 = Symbol('第一个Symbol！');
+        console.log(s,typeof s);
+        // 区别：s = s1 返回false
+
+        //Symbol.for创建
+        let s2 = Symbol.for('第二个Symbol！')
+        let s3 = Symbol.for('第二个Symbol！');
+        console.log(s2, typeof s2);
+        //区别：s2 = s3 返回  Symbol('第二个Symbol！')
+
+        //不能与其他数据进行运算（包括自己）
+        //例如字符串的拼接
+
+        //五种数据类型：USOUB
+        //             U:undefined
+        //             S:Symbol string
+        //             O:Object
+        //             N:null Number
+        //             B:Boolean
+    </script>
+</body>
+</html>

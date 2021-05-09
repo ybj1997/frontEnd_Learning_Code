@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let</title>
+</head>
+<body>
+    <script>
+        //1.变量不能重复声明
+
+        //2.块级作用域
+        {
+            let me = 'ybj';
+        }
+        console.log(me);//报错
+
+        //3.不存在变量提升
+        console.log(song);
+        let song = 'abc';//报错
+        var song = 'abc';//song = undefined
+
+        //4.不影响作用域链
+        {
+            let efg = 'you';
+            function fn(){
+                console.log(efg);
+            }
+            fn();
+        }
+    </script>
+</body>
+</html>

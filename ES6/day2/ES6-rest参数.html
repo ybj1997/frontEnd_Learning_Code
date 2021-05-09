@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest参数</title>
+</head>
+<body>
+    <script>
+        //ES6中引入rest参数，用于获取函数的实参，用来代替 arugments;
+
+        //arugments获取函数实参
+        //function data(){
+        //    console.log(argments);
+        //}
+        //data('你','我','他'); //获取实参为 对象
+        
+
+        //rest参数获取函数实参
+        function data(...args){
+            console.log(args);
+        }
+        data('你','我','他');//获取实参为  数组，便于我们使用数组的方法
+        //rest参数必须放到参数最后
+    </script>
+</body>
+</html>

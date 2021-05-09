@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击切换颜色</title>
+    <style>
+        .main div{
+            display: inline-block;
+            border: 1px solid red;
+            width: 50px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2 class="title">点击切换背景颜色</h2>
+        <div class="1"></div>
+        <div class="2"></div>
+        <div class="3"></div>
+    </div>
+</body>
+<script>
+    let items = document.querySelector('.main').querySelectorAll('div');
+    for (let index = 0; index < items.length; index++) {
+        items[index].onclick = function(){
+            items[0].style.backgroundColor = '#fff';
+            items[2].style.backgroundColor = '#fff';
+            items[1].style.backgroundColor = '#fff';
+            this.style.background = 'pink';
+        }
+    }
+</script>
+</html>
