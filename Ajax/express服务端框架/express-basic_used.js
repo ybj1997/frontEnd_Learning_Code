@@ -5,6 +5,8 @@ const express = require('express');
 const app = express();
 
 //3.创建路由规则
+//request对请求报文封装
+//response对响应报文的封装
 app.get('/server',(request,response)=>{
     //设置相应头 设置允许跨域
     response.setHeader('Access-Control-Allow-Origin','*');
@@ -18,3 +20,4 @@ app.get('/server',(request,response)=>{
 app.listen(8000,()=>{
     console.log('服务已经启动，8000端口监听中。。。');
 })
+//启动服务使用node
