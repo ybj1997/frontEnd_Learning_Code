@@ -18,10 +18,16 @@
     <div id="result"></div>
 </body>
 <script>
+    /*
+    ie缓存问题：ie浏览器在发送一次请求，收到响应后，会进行缓存，对同一个地址请求再次发送时会首先返回本地缓存
+          缺点：对于时效性比较强的请求，不能满足需求
+    */
     const btn = document.querySelector('button');
     const div = document.querySelector('#result');
     btn.addEventListener('click',function(){
         let xhr = new XMLHttpRequest();
+        //解决办法：
+        //添加一个时间戳，这样每次发送请求时都是不一样的地址
         xhr.open('GET','http://127.0.0.1:8000/json-server?time='+Date.now());
         xhr.send();
         xhr.onreadystatechange = function(){

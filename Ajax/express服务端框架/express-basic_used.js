@@ -12,7 +12,12 @@ app.get('/server',(request,response)=>{
     response.setHeader('Access-Control-Allow-Origin','*');
     //设置相应头
     response.setHeader('Access-Control-Allow-Headers','*')
-    //设置响应体
+
+    //设置一个其他类型数据
+    //var data = {
+    //    name:'ybj'
+    //}
+    //设置响应体，延时响应加一个定时器即可
     response.send('String');
 });
 
@@ -20,4 +25,7 @@ app.get('/server',(request,response)=>{
 app.listen(8000,()=>{
     console.log('服务已经启动，8000端口监听中。。。');
 })
-//启动服务使用node
+
+
+//****启动服务使用node
+//****利用nodemon启动一次后，更改数据后，就自动更新启动

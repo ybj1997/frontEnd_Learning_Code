@@ -20,14 +20,24 @@
     const result = document.querySelector('#result');
     window.addEventListener('click',function(){
         const xhr = new XMLHttpRequest();
-        //2.自动转换
-        //xhr.response = 'json';
+
+        //2.JSON格式数据自动转换
+        //xhr.responseType = 'json';
+
+        //open方法创建一个请求
         xhr.open('GET','http://127.0.0.1:8000/json-server');
+
+        //添加请求头，网页一般阻止自定义的请求头，支持预定义，如果要自定义，需要后端处理
+        xhr.setRequestHeader('Content-Type',)
+
+        //send方法发送一个请求
         xhr.send();
+
+        //请求成功的回调
         xhr.onreadystatechange = function(){
             if(xhr.readyState === 4){
                 if(xhr.status >= 200&&xhr.status<300){
-                    //1.手动转换
+                    //1.JSON格式数据手动转换
                     const data = JSON.parse(xhr.response);
                     result.innerHTML = data.name;
                     //console.log(xhr.response);

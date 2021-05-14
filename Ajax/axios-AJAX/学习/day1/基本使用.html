@@ -18,12 +18,14 @@
     </div>
 </body>
 <script>
+    //默认配置 
+    //axios.defaults.xxx
     const btn = document.querySelectorAll('button');
     btn[0].addEventListener('click',()=>{
         axios({
             method:'GET',
             url:'http://localhost:3000/post/1',
-    
+            params:'a=100&b=200'
         }).then(
             value=>console.log(value)
         )
@@ -41,7 +43,7 @@
             value=>console.log(value)
         )
     })
-    //利用put修改一篇新的文章，需要添加id来指定文章
+    //利用put修改一篇新的文章，需要添加参数来指定文章
     btn[2].addEventListener('click',()=>{
         axios({
             method:'PUT',
