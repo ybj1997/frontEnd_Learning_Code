@@ -28,7 +28,7 @@
         xhr.open('GET','http://127.0.0.1:8000/json-server');
 
         //添加请求头，网页一般阻止自定义的请求头，支持预定义，如果要自定义，需要后端处理
-        xhr.setRequestHeader('Content-Type',)
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 
         //send方法发送一个请求
         xhr.send();
