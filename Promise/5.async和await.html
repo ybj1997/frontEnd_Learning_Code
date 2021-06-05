@@ -49,17 +49,16 @@
                 resolve(111)
             })
         }
-
         function fn3() {
             return Promise.resolve('11');
         }
 
         async function fn4() {
             try {
-                const result2 = fn2().then()
+                fn2().then(value=>console.log(value))
                 const result = await fn2();//await右侧表达为Promise时，得到的结果就是这个Promise的value值
                 const result1 = await fn3();//await右侧表达不是Promise对象时，得到的结果就是这个本身
-                console.log(result, result1,result1);
+                console.log(result, result1);
             } catch (error) {
                 console.log(error);
             }
