@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script crossorgin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script crossorgin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         .clearfix:after {
             visibility: hidden;
@@ -15,10 +17,12 @@
             clear: both;
             height: 0;
         }
-        *{
+
+        * {
             padding: 0;
             margin: 0;
         }
+
         body {
             background-color: rgb(122, 133, 166);
         }
@@ -142,49 +146,49 @@
             <ul class="first-maincontent clearfix">
                 <li>
                     <div class="cover">
-                        <img src="./109951165484823968.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                     <p class="dec"></p>
                 </li>
                 <li>
                     <div class="cover">
-                        <img src="./109951165693603925.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                     <p class="dec"></p>
                 </li>
                 <li>
                     <div class="cover">
-                        <img src="./109951165693966983.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                     <p class="dec"></p>
                 </li>
                 <li>
                     <div class="cover">
-                        <img src="./109951165732744574.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                     <p class="dec"></p>
                 </li>
                 <li>
                     <div class="cover">
-                        <img src="./109951165758403565.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                     <p class="dec"></p>
                 </li>
                 <li>
                     <div class="cover">
-                        <img src="./109951165779283206.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                     <p class="dec"></p>
                 </li>
                 <li>
                     <div class="cover">
-                        <img src="./109951165785305076.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                     <p class="dec"></p>
                 </li>
                 <li>
                     <div class="cover">
-                        <img src="./109951165787878806.jpg" alt="">
+                        <img src="" alt="">
                     </div>
                     <p class="dec"></p>
                 </li>
@@ -193,5 +197,19 @@
     </div>
 </body>
 <div class="img"><img src="" alt=""></div>
+
+<script>
+    let img = document.querySelectorAll('.cover');
+
+
+
+    $.ajax({
+        method: 'GET',
+        url: 'https://github.com/Binaryify/NeteaseCloudMusicApi',
+        success:function (msg) {
+            console.log(msg);
+        }
+    })
+</script>
 
 </html>
