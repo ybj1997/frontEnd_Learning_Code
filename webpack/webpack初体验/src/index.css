@@ -1,0 +1,15 @@
+html,
+body {
+  background-color: black;
+}
+html #root,
+body #root {
+  width: 100px;
+  height: 100px;
+  background-color: pink;
+}
+html #img,
+body #img {
+  width: 100px;
+  height: 100px;
+}
