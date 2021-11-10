@@ -9,6 +9,7 @@ module.exports = {
     },
     module: {
         rules: [
+            //打包css
             {
                 test: /\.css$/,
                 use: [
@@ -16,14 +17,16 @@ module.exports = {
                     'css-loader'
                 ]
             },
-            {
-                test: /\.less$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'less-loader'
-                ]
-            },
+            // //打包less
+            // {
+            //     test: /\.less$/,
+            //     use: [
+            //         'style-loader',
+            //         'css-loader',
+            //         'less-loader'
+            //     ]
+            // },
+            //打包css中的url图片
             {
                 test:/\.(png|jpg|gif)$/,
                 loader:'url-loader',
@@ -32,12 +35,18 @@ module.exports = {
                     esModule:false
                 }
             },
+            //打包html中的url图片
             {
                 test: /\.html$/,
                 loader:'html-withimg-loader'
+            },
+            { 
+                exclude:/\.(css|js|html|jpg)$/,
+                loader:'file-loader'
             }
         ]
     },
+    //打包html文件
     plugins:[
         new HtmlWebpackPlugin({
             template:'./src/index.html'

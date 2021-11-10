@@ -13,8 +13,9 @@
     3.webpack.config.js  webpack的配置文件
         作用：当运行webpack指令时，会加载配置文件中的配置
 */
+import './iconfont.css';
 import './index.css'
-import './index.less'
+
 
 let root = document.getElementById('root');
 console.log(root);
