@@ -49,7 +49,7 @@ module.exports = {
     ],
     mode: 'development',
     devServer: {
-        contentBase:resolve(__dirname,'build'),//编译文件夹
+        static:resolve(__dirname,'build'),//编译文件夹
         compress:true,
         open: true,
         port:3000
