@@ -1,4 +1,6 @@
 .a{
     width: 200px;
     height: 200px;background-color: red;
+    display: flex;
+    backface-visibility: hidden;
 }

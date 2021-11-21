@@ -12,5 +12,16 @@
     "url-loader": "^4.1.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.5.0"
+  },
+  "browserslist": {
+    "development": [
+      "last 1 chrom version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "postcss-loader": "^6.2.0",
+    "postcss-preset-env": "^7.0.1"
   }
 }
